@@ -61,8 +61,11 @@
                             <goal>process-asciidoc</goal>
                         </goals>
                         <configuration>
+                            <sourceDocumentName>index.adoc</sourceDocumentName>
                             <backend>html</backend>
-                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${project.build.directory}/snippets</snippets>
+                            </attributes>
                         </configuration>
                     </execution>
                 </executions>

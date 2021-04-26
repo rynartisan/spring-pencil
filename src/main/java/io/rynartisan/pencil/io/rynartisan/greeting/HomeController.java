@@ -11,11 +11,7 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    private final CountService countService;
-
-    public HomeController(CountService countService) {
-        this.countService = countService;
-    }
+    private CountService countService;
 
     @GetMapping("/hi")
     public Map<String, String> greet() {
