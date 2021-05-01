@@ -1,5 +1,6 @@
 package io.rynartisan.pencil.io.rynartisan.pencil;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,15 @@ public class PencilController {
     @PostMapping("/pencil")
     public Pencil makePencil() {
         return this.pencilService.makePencil();
+    }
+
+    @DeleteMapping("/pencil")
+    public Pencil destroyPencil(){
+        try {
+            return this.pencilService.destroyPencil();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null; //TODO: Change the return type of this controller.
     }
 }

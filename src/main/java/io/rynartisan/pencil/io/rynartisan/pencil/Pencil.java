@@ -20,6 +20,22 @@ public class Pencil {
     @Enumerated(EnumType.ORDINAL)
     private color color;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public Pencil.color getColor() {
+        return color;
+    }
+
     public enum color {
         RED, BLUE, GREEN
     }
