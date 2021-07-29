@@ -9,10 +9,12 @@ import java.util.List;
 public class PencilService {
 
     private final PencilRepository pencilRepository;
+    private PencilFactoryService pencilFactoryService;
 
     // Am I going to regret this later? TODO: regret
-    public PencilService(PencilRepository pencilRepository) {
+    public PencilService(PencilRepository pencilRepository, PencilFactoryService pencilFactoryService) {
         this.pencilRepository = pencilRepository;
+        this.pencilFactoryService = pencilFactoryService;
     }
 
     public List<Pencil> getAll() {
@@ -22,10 +24,8 @@ public class PencilService {
     }
 
     public Pencil makePencil() {
-        Pencil p = new Pencil();
-        p.setMake("HB2");
-        p.setColor(Pencil.color.GREEN);
-        pencilRepository.save(p);
+        Pencil p = this.pencilFactoryService.fakePencil();
+        p = pencilRepository.save(p);
         return p;
     }
 

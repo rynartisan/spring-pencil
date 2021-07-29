@@ -17,7 +17,7 @@ public class Pencil {
     private boolean isNew;
 
     @Enumerated(EnumType.ORDINAL)
-    private color color;
+    private Color color;
 
     public int getId() {
         return id;
@@ -31,13 +31,11 @@ public class Pencil {
         return isNew;
     }
 
-    public Pencil.color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public enum color {
-        RED, BLUE, GREEN
-    }
+
 
     public void setMake(String make) {
         this.make = make;
@@ -47,7 +45,17 @@ public class Pencil {
         isNew = aNew;
     }
 
-    public void setColor(Pencil.color color) {
+    public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Pencil{" +
+                "id=" + id +
+                ", make='" + make + '\'' +
+                ", isNew=" + isNew +
+                ", color=" + color +
+                '}';
     }
 }
