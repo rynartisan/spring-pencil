@@ -1,6 +1,6 @@
-package io.rynartisan.pencil.io.rynartisan.greeting;
+package io.rynartisan.pencil.greeting;
 
-import io.rynartisan.pencil.io.rynartisan.counting.CountService;
+import io.rynartisan.pencil.counting.CountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package io.rynartisan.pencil.io.rynartisan.counting;
+package io.rynartisan.pencil.counting;
 
 public class Counter {
     // Where to store the value of the current count.

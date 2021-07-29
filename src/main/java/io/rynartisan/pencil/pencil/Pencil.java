@@ -1,11 +1,10 @@
-package io.rynartisan.pencil.io.rynartisan.pencil;
+package io.rynartisan.pencil.pencil;
 
 import jdk.jfr.Unsigned;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pencils")
 public class Pencil {
 
     @Id

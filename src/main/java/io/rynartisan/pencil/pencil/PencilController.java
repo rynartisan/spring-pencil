@@ -1,4 +1,4 @@
-package io.rynartisan.pencil.io.rynartisan.pencil;
+package io.rynartisan.pencil.pencil;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

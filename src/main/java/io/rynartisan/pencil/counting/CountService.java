@@ -1,4 +1,4 @@
-package io.rynartisan.pencil.io.rynartisan.counting;
+package io.rynartisan.pencil.counting;
 
 import org.springframework.stereotype.Service;
 
