@@ -1,14 +1,14 @@
 package io.rynartisan.pencil.pencil;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class PencilController {
@@ -26,6 +26,11 @@ public class PencilController {
         return pencilService.getAll();
     }
 
+    @GetMapping("/pencil/{id}")
+    public Pencil getAll(@PathVariable String id) {
+        return pencilService.getPencilDetails((Integer.parseInt(id)));
+    }
+
     @PostMapping("/pencil")
     public Pencil makePencil() {
         Pencil p = this.pencilService.makePencil();
@@ -40,5 +45,14 @@ public class PencilController {
             e.printStackTrace();
         }
         return null; //TODO: Change the return type of this controller.
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<String> handleNoSuchElementFoundException(
+            NoSuchElementException exception
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body("Couldn't find any pencils with that ID!");
     }
 }

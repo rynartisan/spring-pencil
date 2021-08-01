@@ -37,4 +37,7 @@ public class PencilService {
         return p;
     }
 
+    public Pencil getPencilDetails(int id) {
+        return pencilRepository.findById(id).orElseThrow();
+    }
 }
