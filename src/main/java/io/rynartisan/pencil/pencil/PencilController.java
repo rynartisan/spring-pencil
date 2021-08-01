@@ -1,24 +1,26 @@
 package io.rynartisan.pencil.pencil;
 
+import io.rynartisan.pencil.exceptions.NoSuchPencilException;
+import io.rynartisan.pencil.logging.logService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
 public class PencilController {
-
+    /**
+     * Pencil service injection.
+     */
     private final PencilService pencilService;
-    Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private logService logService;
 
-    public PencilController(PencilService pencilService) {
+    public PencilController(PencilService pencilService, io.rynartisan.pencil.logging.logService logService) {
         this.pencilService = pencilService;
+        this.logService = logService;
     }
 
     @GetMapping("/pencils")
@@ -47,12 +49,14 @@ public class PencilController {
         return null; //TODO: Change the return type of this controller.
     }
 
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler(NoSuchPencilException.class)
     public ResponseEntity<String> handleNoSuchElementFoundException(
-            NoSuchElementException exception
+            NoSuchPencilException exception
     ) {
+        String response = "Couldn't find any pencils with ID (" + exception.getPencilID() + ")!";
+        logService.logError(response);
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body("Couldn't find any pencils with that ID!");
+                .body(response); //IDEA: override this with a logger response entity? or make your logger class handle that?
     }
 }

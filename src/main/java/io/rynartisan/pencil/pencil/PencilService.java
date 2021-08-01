@@ -1,9 +1,11 @@
 package io.rynartisan.pencil.pencil;
 
+import io.rynartisan.pencil.exceptions.NoSuchPencilException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class PencilService {
@@ -38,6 +40,6 @@ public class PencilService {
     }
 
     public Pencil getPencilDetails(int id) {
-        return pencilRepository.findById(id).orElseThrow();
+        return pencilRepository.findById(id).orElseThrow(() -> new NoSuchPencilException(id));
     }
 }

@@ -8,7 +8,6 @@ public class PencilApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PencilApplication.class, args);
-
     }
 
 }

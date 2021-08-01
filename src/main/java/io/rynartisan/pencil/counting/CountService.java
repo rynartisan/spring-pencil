@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CountService {
 
-    private final Counter counter;
+    private final Counter counter = new Counter();
 
     public CountService() {
-        this.counter = new Counter();
     }
 
     public int count() {
