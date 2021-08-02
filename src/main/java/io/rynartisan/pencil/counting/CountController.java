@@ -11,11 +11,11 @@ import java.util.Map;
 public class CountController {
 
     // Since this is annotated as a service it's automatically injected. or not?
-    private CountService countService;
+    private CountService countService; // Edit
 
     @Autowired
-    public CountController() {
-        this.countService = new CountService();
+    public CountController(CountService countService) {
+        this.countService = countService;
     }
 
     // Autowired can be omitted since this class contains only one constructor.
